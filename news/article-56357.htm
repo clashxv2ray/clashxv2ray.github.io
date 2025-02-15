@@ -1,0 +1,332 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashxv2ray.github.io/news/article-56357.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>模型的威力：基于模型，快速梳理源码_在线工具</title>
+        <meta name="description" content="上一篇我们将梳理的核心流程整合进了概念模型，得到了一个相对详细的流程。本篇是《如何高效阅读源码》专题的第十篇，我们来通过阅读源码来验证上面得到的流程图是否正确，同时进一步细化，从核心流程向外围流程进行" />
+        <link rel="icon" href="/assets/website/img/clashxv2ray/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Clash-X V2ray免费订阅地址官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashxv2ray.github.io/news/article-56357.htm" />
+    <meta property="og:site_name" content="Clash-X V2ray免费订阅地址官网" />
+    <meta property="og:title" content="模型的威力：基于模型，快速梳理源码_在线工具" />
+    <meta property="og:image" content="https://clashxv2ray.github.io/uploads/20250131/6f40635cdfc85f9a63fbf481c8c61983.webp" />
+        <meta property="og:release_date" content="2025-02-14T10:01:50" />
+    <meta property="og:updated_time" content="2025-02-14T10:01:50" />
+        <meta property="og:description" content="上一篇我们将梳理的核心流程整合进了概念模型，得到了一个相对详细的流程。本篇是《如何高效阅读源码》专题的第十篇，我们来通过阅读源码来验证上面得到的流程图是否正确，同时进一步细化，从核心流程向外围流程进行" />
+    
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="模型的威力：基于模型，快速梳理源码_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link href="/assets/website/css/clashxv2ray/css2-Sofia_swap.css" rel="stylesheet">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/swiper.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/fontawesome-pro.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/spacing.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/custom-font.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4Y8M6RNBF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4Y8M6RNBF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+
+    <!-- preloader start -->
+    <div id="preloader">
+        <div class="preloader-close">x</div>
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!-- preloader start -->
+    <!-- Backtotop start -->
+    <div class="backtotop-wrap cursor-pointer">
+        <svg class="backtotop-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+        </svg>
+    </div>
+    <!-- Backtotop end -->
+    <!-- Offcanvas area start -->
+    <div class="fix">
+        <div class="offcanvas__area">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="/" class="xcblog-blog-logo">
+                                <span>ClashX V2ray</span>
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button class="offcanvas-close-icon animation--flip">
+                                <span class="offcanvas-m-lines">
+                                    <span class="offcanvas-m-line line--1"></span><span class="offcanvas-m-line line--2"></span><span class="offcanvas-m-line line--3"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mobile-menu fix"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+    <div class="offcanvas__overlay-white"></div>
+    <!-- Offcanvas area start -->
+    <!-- Header area start -->
+    <header>
+        <div id="header-sticky" class="header__area header-1">
+            <div class="container">
+                <div class="mega__menu-wrapper p-relative">
+                    <div class="header__main">
+                        <div class="header__left">
+                            <div class="header__logo">
+                                <div class="logo">
+                                    <a href="/" class="xcblog-blog-logo">
+                                                                                <span>ClashX V2ray</span>
+                                                                            </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__middle">
+                            <div class="mean__menu-wrapper d-none d-lg-block">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                                                                        <li>
+                                                <a href="/">首页</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/free-nodes/">免费节点</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/paid-subscribe/">推荐机场</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/client.htm">客户端</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/news/">新闻资讯</a>
+                                            </li>
+                                                                                    </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__right">
+                            <div class="header__action d-flex align-items-center">
+                                <div class="header__hamburger ml-20 d-lg-none">
+                                    <div class="sidebar__toggle">
+                                        <button class="bar-icon">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header area end -->
+
+<div id="popup-search-box">
+    <div class="box-inner-wrap d-flex align-items-center">
+        <form id="form" action="#" method="get" role="search">
+            <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+        </form>
+        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+    </div>
+</div>
+<!-- Header area end -->
+
+<!-- Body main wrapper start -->
+<main>
+
+    <div class="breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg ">
+        <div class="banner-home__middel-shape inner-top-shape"></div>
+        <div class="container">
+            <div class="banner-all-shape-wrapper">
+                <div class="banner-home__banner-shape-1 first-shape">
+                    <img class="upDown-top" src="/assets/website/img/clashxv2ray/banner-shape-1.svg" alt="img not found">
+                </div>
+                <div class="banner-home__banner-shape-2 second-shape">
+                    <img class="upDown-bottom" src="/assets/website/img/clashxv2ray/banner-shape-2.svg" alt="img not found">
+                </div>
+                <div class="right-shape">
+                    <img class="zooming" src="/assets/website/img/clashxv2ray/inner-right-shape.svg" alt="img not found">
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-12">
+                    <div class="breadcrumb__content text-center">
+                        <div class="breadcrumb__title-wrapper mb-15 mb-sm-10 mb-xs-5">
+                            <h1 class="breadcrumb__title color-white">模型的威力：基于模型，快速梳理源码_在线工具</h1>
+                        </div>
+                        <div class="breadcrumb__menu" data-wow-delay=".5s">
+                            <nav>
+                                <ul>
+                                    <li><span><a href="/">首页</a></span></li>
+                                    <li><span><a href="/news/">新闻资讯</a></span></li>
+                                    <li class="active"><span>正文</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--latest Choose Us start-->
+        <section class="latest-Choose-us__area section-space overflow-hidden latest-Choose-bg">
+            <div class="container p-relative z-index-1">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<blockquote> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://mp.weixin.qq.com/s?__biz=MzA4MjQ1ODIzMA==&amp;mid=2652200478&amp;idx=1&amp;sn=be9e2878530d56641cab0dcd101e2e31&amp;chksm=84649d07b313141191afca7bea0bd5e3a998422b96c2fdd5b7145dbe118b0d4a8e24de65f14e&amp;scene=21#wechat_redirect"  target="_blank" data-itemshowtype="0" data-linktype="2"  rel="nofollow">上一篇</a>我们将梳理的核心流程整合进了概念模型，得到了一个相对详细的流程。<br />本篇是《如何高效阅读源码》专题的第十篇，我们来通过阅读源码来验证上面得到的流程图是否正确，同时进一步细化，从核心流程向外围流程进行梳理，构建一个更完整的流程。</p> </blockquote> <p>本节主要内容：</p> <ul class="list-paddingleft-2"> <li> <p>从调用关系确定调用类</p> </li> <li> <p>梳理调用类结构</p> </li> <li> <p>梳理调用类核心流程</p> </li> <li> <p>完善流程图</p> </li> </ul> </h1> <p>前文我们得到了下面这张图：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/ae1ef6ba3c4758dc72da14437cd3c7e1.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>我们猜测TestRunners会通过测试的Class来构建TestClass，现在我们通过源码来验证这个猜测。<br />我们在TestClass的构造方法上按下ALT+F7，IDEA就会列出调用TestClass构造方法的类。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/6e82f5edd603fbcbdd0d19fbc65c6f81.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>有很多的测试类，<strong>结合前面的核心包分析</strong>，我们可以直接定位到runners包，runners包中有个JUnit4类。这个类应该就是我们阅读扩展模块的入口了！</p> </h1> <p>我们通过JUnit4这个类来构建TestRunners的UML结构。直接在JUnit4上右击，选择Diagrams即可。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/8aeec5afe2f4867996dca65685473bcb.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>从上图我们可以看到JUnit4有三个父类，一共实现了四个接口。<br />这里还有个小技巧，IDEA提供了一个功能，能区分各个类是否在同一个包下，只需要选中某个类，如果哪些类和选中的类不在同一个包下，则会被置灰。</p> <p>例如，我们选中JUnit4，从下图可以看到，除了ParentRunner和BlockJUnit4ClassRunner，其它类都被置灰了。说明其它类和JUnit4不在同一个包下，而ParentRunner和BlockJUnit4ClassRunner与JUnit4同属于org.junit.runners包。结合前面的包关系图，我们可以知道JUnit4与哪些包有关系。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/cb69446d10859006dd60615495851855.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>梳理出了大致的调用类模型，我们可以基于这个模型来梳理流程，在梳理流程的同时，再反过来完善调用类模型。</p> </h1> <p>为了便于梳理，我们先忽略那四个接口，直接看类。<br />首先，我们注意到Runner和ParentRunner是两个抽象类。好，这里我们停下来回想一下，我们<strong>使用抽象类的作用是什么</strong>？一般就三个作用：</p> <ul class="list-paddingleft-2"> <li> <p>提供子类公用的方法</p> </li> <li> <p>定义流程，比如模板方法模式</p> </li> <li> <p>定义子类需要实现的抽象方法</p> </li> </ul> <p>所以我们可以从这三个角度来看这两个抽象类。我们从最上层的Runner开始。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/29b842b9969661770913f53a67453ee9.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>这个类非常的简单，我们一眼就能看到那个最核心的方法---run方法。我们直接去找run方法的实现。假设你点击IDE右侧的按钮，展示子类，你会发现有很多的子类实现，想要找到具体的实现，是不是要疯？<strong>回想一下，你使用debug来读源码的时候，是不是经常遇到这样的问题</strong>？</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/03095b9ad0067cd48fb10655f3f2bd57.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>我们在前面梳理出的模型，在这里就起到了非常大的作用，限定了Runner的子类就是ParentRunner，所以我们直接到ParentRunner中去找run方法的实现。<strong>这也是先建模再梳理流程的优势之一。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/13bddb0f54f12a0d7152974ed64276b2.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>这里的核心是通过classBlock方法构建了一个Statement，然后调用了evaluate方法并通过RunNotifier对象来监听执行过程。从这里我们知道Statement是个执行类，用于执行测试用，TestNotifier是个通知类，用于将执行信息通知给对应的类，所以我们将其加入到调用模型中。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/e78072b38129654541e4ce1c68297aa0.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <ul class="list-paddingleft-2"> <li> <p>为什么使用Statement类？作用是什么？</p> </li> <li> <p>RunNotifier如何进行监听的？</p> </li> </ul> <p>这里我们先提出疑问，记录下来，先梳理流程，后面再进行解答。<br />我们深入到classBlock方法中。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/fe2d79d7ad6d1b9b9124ce2ca3c82b83.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>这里通过childrenInvoker方法来构建了Statement。<br />if判断里的逻辑是干什么用的呢？看方法名好像和BeforeClass、AfterClass注解有关系，它是怎么处理的呢？<br />我们先直接跳到childrenInvoker方法来将流程走完。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/bc2b2d3ba705456a989b825d39f3b4c3.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>从这里可以看到，这里实际上创建了一个Statement的匿名类，调用的是ParentRunner中的runChildren方法。<br />为什么要用Statement封装一层？都在ParentRunner类里面，直接调用不就好了吗？</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/8325076d96dfedca0723569308180cce.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>runChildren通过getFilteredChildren方法遍历子元素，通过runChild来执行。<br />为什么这里要构建一个Runnable来执行呢？</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/bbbfb398a6d5febcde4d97d5c8962a0f.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>getFilteredChildren方法使用了DCL来加锁，实际调用getChildren来获取子元素，而getChildren是个抽象方法，由子类来实现。具体是哪个子类实现的呢？<strong>这里再一次提现了建模的优势</strong>。想一想，如果是debug的话，这里是不是又要迷失在一堆子类中了？而我们一开始就限定了需要阅读的类，所以我们可以直接定位到BlockJUnit4ClassRunner这个类，看它的getChildren实现。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/691a2794d98ad8fbee1945ce0e130ee4.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> <p>这里可以看到和前面的TestClass关联上了，去获取的是TestClass中的所有包含了Test注解的方法，然后去执行。</p> </h1> <p>至此，我们梳理出了TestRunner调用TestClass的流程：</p> <ul class="list-paddingleft-2"> <li> <p>某个类会创建一个Runner的实例，创建的可能是BlockJUnit4ClassRunner，也可能是JUnit4</p> </li> <li> <p>然后调用其run方法来执行测试</p> </li> <li> <p>此方法通过RunNotifier来通知对应的类，通过Statement类来执行</p> </li> <li> <p>执行方式是查找测试类中，所有包含了Test注解的方法，一个个的去执行</p> </li> </ul> <p>我们将这个流程添加到流程图中，进一步完善流程。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220430/abe25851918b0e391e5034e6cfc626b8.jpg" alt="模型的威力：基于模型，快速梳理源码_在线工具"></p> <p> </p> <p> </p> </h1> <p>本文通过调用关系，梳理出了TestRunner调用核心模型的流程。通过此方法不断的向外梳理，你就能构建出完整的项目流程图。<br />下节将对本节梳理出的问题做出解答，理解为什么这么设计。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-56356.htm">linux文件编辑VI命令详解_在线工具</a></p>
+                                        <p>下一个：<a href="/news/article-56926.htm">宠物粮食加工厂加盟电话多少啊 宠物粮食加工厂加盟电话多少啊</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-14-free-high-speed-nodes.htm" title="2月14日最新Clash-X订阅 | 22.4M/S|2025年Clash/V2ray/SSR/Shadowrocket免费节点地址链接分享">2月14日最新Clash-X订阅 | 22.4M/S|2025年Clash/V2ray/SSR/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-56356.htm" title="linux文件编辑VI命令详解_在线工具">linux文件编辑VI命令详解_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-54154.htm" title="郑州宠物疫苗收费标准最新（郑州宠物狗免费打疫苗）">郑州宠物疫苗收费标准最新（郑州宠物狗免费打疫苗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-clash-v2ray-ss-ssr.htm" title="2月8日最新Clash-X订阅 | 18.3M/S|2025年V2ray/Clash/SSR/Shadowrocket免费节点地址链接分享">2月8日最新Clash-X订阅 | 18.3M/S|2025年V2ray/Clash/SSR/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-56357.htm" title="模型的威力：基于模型，快速梳理源码_在线工具">模型的威力：基于模型，快速梳理源码_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-50965.htm" title="开宠物医院的条件有哪些（开宠物医院都需要什么证件）">开宠物医院的条件有哪些（开宠物医院都需要什么证件）</a></li>
+                        <li class="py-2"><a href="/news/article-55260.htm" title="全国排名前十的兽药厂 全国排名前十的兽药厂家有哪些">全国排名前十的兽药厂 全国排名前十的兽药厂家有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-12-free-subscribe-node.htm" title="2月12日最新Clash-X订阅 | 19.8M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享">2月12日最新Clash-X订阅 | 19.8M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-53605.htm" title="开个宠物寄养店需要什么证件和手续（开个宠物寄养店需要什么证件和手续呢）">开个宠物寄养店需要什么证件和手续（开个宠物寄养店需要什么证件和手续呢）</a></li>
+                        <li class="py-2"><a href="/news/article-53604.htm" title="动物医院资质是什么地方颁发的证书呢（动物医院资质是什么地方颁发的证书呢）">动物医院资质是什么地方颁发的证书呢（动物医院资质是什么地方颁发的证书呢）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--latest Choose Us end-->
+        
+        
+    </main>
+        <!-- Footer area start -->
+    <footer>
+        <section class="footer__area-common background overflow-hidden position-relative z-1">
+            <div class="footer__bottom-wrapper footer__bottom-home-1-bg">
+                <div class="container">
+                    <div class="footer__bottom">
+                        <div class="footer__copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Clash-X V2ray免费订阅地址官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                        <div class="footer__copyright-menu">
+                            <ul>
+                                <li><a href="about-us.html">Privacy & Terms Condition</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/swiper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/wow.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/type.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/counterup.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/nice-select.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery-ui.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/parallax-scroll.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery.countdown.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/isotope-docs.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
