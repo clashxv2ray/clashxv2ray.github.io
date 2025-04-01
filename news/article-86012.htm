@@ -1,0 +1,332 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashxv2ray.github.io/news/article-86012.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>vue3.0，setup()的使用，Composition Api(组合式api)data，computed，methods，watch</title>
+        <meta name="description" content="vue3.0项目创建好之后，来看看一个简单组件内的代码顺便介绍几个特点: 1.组合式api就是指把vue2.0中的data，computed，methods，watch都集中在3.0中的setup()" />
+        <link rel="icon" href="/assets/website/img/clashxv2ray/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Clash-X V2ray免费订阅地址官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashxv2ray.github.io/news/article-86012.htm" />
+    <meta property="og:site_name" content="Clash-X V2ray免费订阅地址官网" />
+    <meta property="og:title" content="vue3.0，setup()的使用，Composition Api(组合式api)data，computed，methods，watch" />
+    <meta property="og:image" content="https://clashxv2ray.github.io/uploads/20250131/9ce0044a897b10e96d31e1ef48c41fa0.webp" />
+        <meta property="og:release_date" content="2025-04-01T09:47:52" />
+    <meta property="og:updated_time" content="2025-04-01T09:47:52" />
+        <meta property="og:description" content="vue3.0项目创建好之后，来看看一个简单组件内的代码顺便介绍几个特点: 1.组合式api就是指把vue2.0中的data，computed，methods，watch都集中在3.0中的setup()" />
+    
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue3.0，setup()的使用，Composition Api(组合式api)data，computed，methods，watch">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link href="/assets/website/css/clashxv2ray/css2-Sofia_swap.css" rel="stylesheet">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/swiper.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/fontawesome-pro.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/spacing.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/custom-font.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4Y8M6RNBF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4Y8M6RNBF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+
+    <!-- preloader start -->
+    <div id="preloader">
+        <div class="preloader-close">x</div>
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!-- preloader start -->
+    <!-- Backtotop start -->
+    <div class="backtotop-wrap cursor-pointer">
+        <svg class="backtotop-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+        </svg>
+    </div>
+    <!-- Backtotop end -->
+    <!-- Offcanvas area start -->
+    <div class="fix">
+        <div class="offcanvas__area">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="/" class="xcblog-blog-logo">
+                                <span>ClashX V2ray</span>
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button class="offcanvas-close-icon animation--flip">
+                                <span class="offcanvas-m-lines">
+                                    <span class="offcanvas-m-line line--1"></span><span class="offcanvas-m-line line--2"></span><span class="offcanvas-m-line line--3"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mobile-menu fix"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+    <div class="offcanvas__overlay-white"></div>
+    <!-- Offcanvas area start -->
+    <!-- Header area start -->
+    <header>
+        <div id="header-sticky" class="header__area header-1">
+            <div class="container">
+                <div class="mega__menu-wrapper p-relative">
+                    <div class="header__main">
+                        <div class="header__left">
+                            <div class="header__logo">
+                                <div class="logo">
+                                    <a href="/" class="xcblog-blog-logo">
+                                                                                <span>ClashX V2ray</span>
+                                                                            </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__middle">
+                            <div class="mean__menu-wrapper d-none d-lg-block">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                                                                        <li>
+                                                <a href="/">首页</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/free-nodes/">免费节点</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/paid-subscribe/">推荐机场</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/client.htm">客户端</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/news/">新闻资讯</a>
+                                            </li>
+                                                                                    </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__right">
+                            <div class="header__action d-flex align-items-center">
+                                <div class="header__hamburger ml-20 d-lg-none">
+                                    <div class="sidebar__toggle">
+                                        <button class="bar-icon">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header area end -->
+
+<div id="popup-search-box">
+    <div class="box-inner-wrap d-flex align-items-center">
+        <form id="form" action="#" method="get" role="search">
+            <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+        </form>
+        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+    </div>
+</div>
+<!-- Header area end -->
+
+<!-- Body main wrapper start -->
+<main>
+
+    <div class="breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg ">
+        <div class="banner-home__middel-shape inner-top-shape"></div>
+        <div class="container">
+            <div class="banner-all-shape-wrapper">
+                <div class="banner-home__banner-shape-1 first-shape">
+                    <img class="upDown-top" src="/assets/website/img/clashxv2ray/banner-shape-1.svg" alt="img not found">
+                </div>
+                <div class="banner-home__banner-shape-2 second-shape">
+                    <img class="upDown-bottom" src="/assets/website/img/clashxv2ray/banner-shape-2.svg" alt="img not found">
+                </div>
+                <div class="right-shape">
+                    <img class="zooming" src="/assets/website/img/clashxv2ray/inner-right-shape.svg" alt="img not found">
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-12">
+                    <div class="breadcrumb__content text-center">
+                        <div class="breadcrumb__title-wrapper mb-15 mb-sm-10 mb-xs-5">
+                            <h1 class="breadcrumb__title color-white">vue3.0，setup()的使用，Composition Api(组合式api)data，computed，methods，watch</h1>
+                        </div>
+                        <div class="breadcrumb__menu" data-wow-delay=".5s">
+                            <nav>
+                                <ul>
+                                    <li><span><a href="/">首页</a></span></li>
+                                    <li><span><a href="/news/">新闻资讯</a></span></li>
+                                    <li class="active"><span>正文</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--latest Choose Us start-->
+        <section class="latest-Choose-us__area section-space overflow-hidden latest-Choose-bg">
+            <div class="container p-relative z-index-1">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night"> <h2><a id="vue30_0" rel="nofollow"></a>vue3.0项目创建好之后，来看看一个简单组件内的代码顺便介绍几个特点:</h2> <p>1.组合式api就是指把vue2.0中的<strong>data</strong>，<strong>computed</strong>，<strong>methods</strong>，<strong>watch</strong>都集中在3.0中的setup()中<br /> 2.setup取代<strong>beforeCreate</strong>，<strong>created</strong>这两个周期，也就是原本放在这两个钩子的内容现在放在setup中<br /> 3.在setup里无法再使用<strong>this</strong>，因为在执行setup的时候组件实例还没创建成功(setup执行在<strong>beforeCreate</strong>之前)。<br /> 4.接收两个参数<strong>props</strong>，<strong>context</strong>(具体的后面讲)<br /> 5.代码可读性更高，维护也更方便。当然也完美兼容vue2.x</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"home"</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span>user.name<span class="token punctuation">}</span><span class="token punctuation">}</span>--<span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span>user.age<span class="token punctuation">}</span><span class="token punctuation">}</span>--<span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span>num<span class="token punctuation">}</span><span class="token punctuation">}</span>--<span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span>doubleCount<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"change"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>/button<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>/template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">import</span><span class="token punctuation">{<!-- --></span> ref, reactive, computed, watch<span class="token punctuation">}</span> from<span class="token string">'vue'</span><span class="token builtin class-name">export</span> default<span class="token punctuation">{<!-- --></span>   name:<span class="token string">'Home'</span>,<span class="token function-name function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>   	const user<span class="token operator">=</span> reactive<span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span> name:<span class="token string">'jerry'</span>, age:<span class="token number">18</span><span class="token punctuation">}</span><span class="token punctuation">)</span> // 创建引用类型数据使用reactive   	const num<span class="token operator">=</span> ref<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>	// 创建基础数据类型使用ref,使用是用.vulue 	const doubleCount<span class="token operator">=</span> computed<span class="token punctuation">((</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span><span class="token builtin class-name">return</span> num.value *<span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span>     // watch的单个值写法，第一个参数是一个getter函数，该函数返回一个响应式对象，要响应式。     watch<span class="token punctuation">((</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span> num.value,<span class="token punctuation">(</span>newValue, old<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span>     	// newValue新值,old旧值     	console.log<span class="token punctuation">(</span>newValue, old,<span class="token string">'--w'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span>     // watch的多个值写法     /* const num1<span class="token operator">=</span> ref<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span>     watch<span class="token punctuation">(</span><span class="token punctuation">[</span>count, count1<span class="token punctuation">]</span>,<span class="token punctuation">(</span><span class="token punctuation">[</span>newCount, newCount2<span class="token punctuation">]</span>,<span class="token punctuation">[</span>oldCount, oldCount2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span>       console.log<span class="token punctuation">(</span><span class="token punctuation">[</span>newCount, newCount2<span class="token punctuation">]</span>,<span class="token string">'--'</span>,<span class="token punctuation">[</span>oldCount, oldCount2<span class="token punctuation">]</span>,<span class="token string">'--w'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span>      watch<span class="token punctuation">((</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span> user,<span class="token punctuation">(</span>newValue, oldValue<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span>     	console.log<span class="token punctuation">(</span>newValue, oldValue<span class="token punctuation">)</span><span class="token punctuation">}</span>,<span class="token punctuation">{<!-- --></span> deep:<span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span> // 深入监听user对象内部变化     watch<span class="token punctuation">(</span><span class="token punctuation">[</span>count, count1<span class="token punctuation">]</span>,<span class="token punctuation">(</span>newValue, oldValue<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span>      	console.log<span class="token punctuation">(</span>newValue<span class="token punctuation">)</span>//<span class="token punctuation">[</span>newCount, newCount2<span class="token punctuation">]</span>       	console.log<span class="token punctuation">(</span>oldValue<span class="token punctuation">)</span>//<span class="token punctuation">[</span>oldCount, oldCount2<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span> */     const change<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token punctuation">{<!-- --></span>       	num.value++<span class="token punctuation">}</span><span class="token builtin class-name">return</span><span class="token punctuation">{<!-- --></span>     	user,      	num,     	doubleCount，     	change<span class="token punctuation">}</span><span class="token punctuation">}</span>,<span class="token function-name function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>   	// vue2.0的内容也还是可以照常用的<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> <h2><a id="setup_59" rel="nofollow"></a>setup()的两个参数</h2> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">import</span><span class="token punctuation">{<!-- --></span> toRefs, toRef<span class="token punctuation">}</span> from<span class="token string">'vue'</span><span class="token builtin class-name">export</span> default<span class="token punctuation">{<!-- --></span>   name:<span class="token string">'Home'</span>,   // 因为props是响应性的，使用解构后会消除其响应性，所以需要使用toRefs, toRef   // 但是context不具有响应性，可以直接使用解构赋值，但是只能访问attrs, slots, emit, expose   setup<span class="token punctuation">(</span>props, context<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     const<span class="token punctuation">{<!-- --></span> name<span class="token punctuation">}</span><span class="token operator">=</span> toRefs<span class="token punctuation">(</span>props<span class="token punctuation">)</span>     const<span class="token punctuation">{<!-- --></span> name0<span class="token punctuation">}</span><span class="token operator">=</span> toRef<span class="token punctuation">(</span>props,<span class="token string">'jerry'</span><span class="token punctuation">)</span> // toRef的第二个参数就类似于函数形参的默认值    	const<span class="token punctuation">{<!-- --></span>attrs, slots, emit, expose<span class="token punctuation">}</span><span class="token operator">=</span> context // 可以打印出来自己去看这几个属性<span class="token builtin class-name">return</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> <p><strong>方便维护，便于理解</strong><br /> 这样看就不会像vue2.0那样，在维护的时候想要查询某个变量的逻辑，要去data，watch，methos等等里面去找，代码一多，眼睛都给你看画，脑壳看痛</p> <pre><code class="prism language-bash"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">import</span><span class="token punctuation">{<!-- --></span> ref, reactive<span class="token punctuation">}</span> from<span class="token string">'vue'</span><span class="token builtin class-name">export</span> default<span class="token punctuation">{<!-- --></span>   name:<span class="token string">'Home'</span>,   setup<span class="token punctuation">(</span>props, context<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 	const num<span class="token operator">=</span> ref<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> 	/*<span class="token builtin class-name">.</span> 	.这里都是对num的操作代码<span class="token builtin class-name">.</span> 	*/ 	 	const user<span class="token operator">=</span> reactive<span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>name:<span class="token string">'jerry'</span><span class="token punctuation">}</span><span class="token punctuation">)</span> 	/*<span class="token builtin class-name">.</span> 	.这里都是对user的操作代码<span class="token builtin class-name">.</span> 	*/<span class="token builtin class-name">return</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span>/script<span class="token operator">&gt;</span></code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-85299.htm">领养狗狗说明（领养狗狗有什么好处和坏处）</a></p>
+                                        <p>下一个：<a href="/news/article-86013.htm">动物医院介绍资料 动物医院介绍资料大全</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-86012.htm" title="vue3.0，setup()的使用，Composition Api(组合式api)data，computed，methods，watch">vue3.0，setup()的使用，Composition Api(组合式api)data，computed，methods，watch</a></li>
+                        <li class="py-2"><a href="/news/article-81734.htm" title="如何过滤掉MySQL返回的结果集的行中的重复项？">如何过滤掉MySQL返回的结果集的行中的重复项？</a></li>
+                        <li class="py-2"><a href="/news/article-73561.htm" title="使用aspnetcore前后端分离开发，你一定要知道这个">使用aspnetcore前后端分离开发，你一定要知道这个</a></li>
+                        <li class="py-2"><a href="/news/article-79671.htm" title="加工狗粮的机器需要多少钱? 加工狗粮的机器需要多少钱一台">加工狗粮的机器需要多少钱? 加工狗粮的机器需要多少钱一台</a></li>
+                        <li class="py-2"><a href="/news/article-75582.htm" title="宠物领养协议书怎么生效的 宠物领养协议书怎么生效的呢">宠物领养协议书怎么生效的 宠物领养协议书怎么生效的呢</a></li>
+                        <li class="py-2"><a href="/news/article-74912.htm" title="哈尔滨农大动物医院电话是多少 哈尔滨农大动物医院电话是多少号">哈尔滨农大动物医院电话是多少 哈尔滨农大动物医院电话是多少号</a></li>
+                        <li class="py-2"><a href="/news/article-84580.htm" title="动物疫苗经销商电话是多少啊（动物疫苗经销商电话是多少啊）">动物疫苗经销商电话是多少啊（动物疫苗经销商电话是多少啊）</a></li>
+                        <li class="py-2"><a href="/news/article-67040.htm" title="idea如何代码回退">idea如何代码回退</a></li>
+                        <li class="py-2"><a href="/news/article-83862.htm" title="Python 传递元组参数">Python 传递元组参数</a></li>
+                        <li class="py-2"><a href="/news/article-65772.htm" title="狗粮加工设备及配方厂家有哪些（狗粮加工需要什么设备）">狗粮加工设备及配方厂家有哪些（狗粮加工需要什么设备）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">88</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--latest Choose Us end-->
+        
+        
+    </main>
+        <!-- Footer area start -->
+    <footer>
+        <section class="footer__area-common background overflow-hidden position-relative z-1">
+            <div class="footer__bottom-wrapper footer__bottom-home-1-bg">
+                <div class="container">
+                    <div class="footer__bottom">
+                        <div class="footer__copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Clash-X V2ray免费订阅地址官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                        <div class="footer__copyright-menu">
+                            <ul>
+                                <li><a href="about-us.html">Privacy & Terms Condition</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/swiper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/wow.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/type.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/counterup.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/nice-select.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery-ui.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/parallax-scroll.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery.countdown.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/isotope-docs.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
