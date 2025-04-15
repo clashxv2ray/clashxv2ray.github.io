@@ -1,0 +1,334 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashxv2ray.github.io/news/article-94848.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>企业应用架构研究系列十九：Docker开发环境</title>
+        <meta name="description" content="　　软件行业流行这样一个说法，由于Docker 技术的成熟和该技术被广大厂商的普遍应用，成就了微服务领域的快速成长，衍生了云原生技术和公有云的进一步推广。我个人认为Dockers 技术、微服务技术、云" />
+        <link rel="icon" href="/assets/website/img/clashxv2ray/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Clash-X V2ray免费订阅地址官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashxv2ray.github.io/news/article-94848.htm" />
+    <meta property="og:site_name" content="Clash-X V2ray免费订阅地址官网" />
+    <meta property="og:title" content="企业应用架构研究系列十九：Docker开发环境" />
+    <meta property="og:image" content="https://clashxv2ray.github.io/uploads/20250131/e38e10172956ba8ad95eb75d6be25f9e.webp" />
+        <meta property="og:release_date" content="2025-04-13T07:18:34" />
+    <meta property="og:updated_time" content="2025-04-13T07:18:34" />
+        <meta property="og:description" content="　　软件行业流行这样一个说法，由于Docker 技术的成熟和该技术被广大厂商的普遍应用，成就了微服务领域的快速成长，衍生了云原生技术和公有云的进一步推广。我个人认为Dockers 技术、微服务技术、云" />
+    
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="企业应用架构研究系列十九：Docker开发环境">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link href="/assets/website/css/clashxv2ray/css2-Sofia_swap.css" rel="stylesheet">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/swiper.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/fontawesome-pro.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/spacing.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/custom-font.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4Y8M6RNBF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4Y8M6RNBF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+
+    <!-- preloader start -->
+    <div id="preloader">
+        <div class="preloader-close">x</div>
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!-- preloader start -->
+    <!-- Backtotop start -->
+    <div class="backtotop-wrap cursor-pointer">
+        <svg class="backtotop-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+        </svg>
+    </div>
+    <!-- Backtotop end -->
+    <!-- Offcanvas area start -->
+    <div class="fix">
+        <div class="offcanvas__area">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="/" class="xcblog-blog-logo">
+                                <span>ClashX V2ray</span>
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button class="offcanvas-close-icon animation--flip">
+                                <span class="offcanvas-m-lines">
+                                    <span class="offcanvas-m-line line--1"></span><span class="offcanvas-m-line line--2"></span><span class="offcanvas-m-line line--3"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mobile-menu fix"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+    <div class="offcanvas__overlay-white"></div>
+    <!-- Offcanvas area start -->
+    <!-- Header area start -->
+    <header>
+        <div id="header-sticky" class="header__area header-1">
+            <div class="container">
+                <div class="mega__menu-wrapper p-relative">
+                    <div class="header__main">
+                        <div class="header__left">
+                            <div class="header__logo">
+                                <div class="logo">
+                                    <a href="/" class="xcblog-blog-logo">
+                                                                                <span>ClashX V2ray</span>
+                                                                            </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__middle">
+                            <div class="mean__menu-wrapper d-none d-lg-block">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                                                                        <li>
+                                                <a href="/">首页</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/free-nodes/">免费节点</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/paid-subscribe/">推荐机场</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/client.htm">客户端</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/news/">新闻资讯</a>
+                                            </li>
+                                                                                    </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__right">
+                            <div class="header__action d-flex align-items-center">
+                                <div class="header__hamburger ml-20 d-lg-none">
+                                    <div class="sidebar__toggle">
+                                        <button class="bar-icon">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header area end -->
+
+<div id="popup-search-box">
+    <div class="box-inner-wrap d-flex align-items-center">
+        <form id="form" action="#" method="get" role="search">
+            <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+        </form>
+        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+    </div>
+</div>
+<!-- Header area end -->
+
+<!-- Body main wrapper start -->
+<main>
+
+    <div class="breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg ">
+        <div class="banner-home__middel-shape inner-top-shape"></div>
+        <div class="container">
+            <div class="banner-all-shape-wrapper">
+                <div class="banner-home__banner-shape-1 first-shape">
+                    <img class="upDown-top" src="/assets/website/img/clashxv2ray/banner-shape-1.svg" alt="img not found">
+                </div>
+                <div class="banner-home__banner-shape-2 second-shape">
+                    <img class="upDown-bottom" src="/assets/website/img/clashxv2ray/banner-shape-2.svg" alt="img not found">
+                </div>
+                <div class="right-shape">
+                    <img class="zooming" src="/assets/website/img/clashxv2ray/inner-right-shape.svg" alt="img not found">
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-12">
+                    <div class="breadcrumb__content text-center">
+                        <div class="breadcrumb__title-wrapper mb-15 mb-sm-10 mb-xs-5">
+                            <h1 class="breadcrumb__title color-white">企业应用架构研究系列十九：Docker开发环境</h1>
+                        </div>
+                        <div class="breadcrumb__menu" data-wow-delay=".5s">
+                            <nav>
+                                <ul>
+                                    <li><span><a href="/">首页</a></span></li>
+                                    <li><span><a href="/news/">新闻资讯</a></span></li>
+                                    <li class="active"><span>正文</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--latest Choose Us start-->
+        <section class="latest-Choose-us__area section-space overflow-hidden latest-Choose-bg">
+            <div class="container p-relative z-index-1">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<p>　　软件行业流行这样一个说法，由于Docker 技术的成熟和该技术被广大厂商的普遍应用，成就了微服务领域的快速成长，衍生了云原生技术和公有云的进一步推广。我个人认为Dockers 技术、微服务技术、云原生技术乃至领域模型概念其实是彼此相互相吸，互相依赖，组成了当今软件行业的一个新的生态链。作为软件行业从业者，虽然不能精通每一项新兴技术，但是我们要对主流技术应保持一颗积极探索的心。</p> <p>　　本章节开始对Dockers领域的技术探索之路开始总结，之前身处项目，没有太多精力对它进行全面总结，但是，软件开发人员对技术的研究和总结是应该保持的良好习惯。</p> <p><img fetchpriority="high" decoding="async" src="http://img.555519.xyz/uploads3/20220510/d72ed661bf3abdf1f95ed73c630e412a.jpg" alt="企业应用架构研究系列十九：Docker开发环境"></p> <p>&nbsp;　　闲话少说，开始Docker 探索的的一个步骤，Docker 环境的搭建。首先我们需要在本地开发环境安装Docker 的运行环境，我的开发环境是Windows 10 ，开发工具使用的是VS2022。</p> <p>　　第一步安装&nbsp;Docker Desktop for Windows, 可以从官网（https://www.docker.com/get-started）直接下载，Windows10 需要最新的企业版本或专业版本，安装的过程中需要安装WSL2(它支持适用于 Linux 的 Windows 子系统在 Windows 上运行 ELF64 Linux 二进制文件)。安装过程基本比较简单，都是One By One. 此处就省略了，特别强调一点，第一次启动的时候特别慢，不要担心，是Docker Desktop 进行更新和检查所需组件，并进行相关的自动配置。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/0efdb983973499c987a1a5c775284a5a.jpg" alt="企业应用架构研究系列十九：Docker开发环境"></p> <p>　　安装完毕后，启动界面如上图，就可以在本地进行开心的玩耍Docker了。本篇文章不再对docker 的专业名词进行解释，可以自行进行度娘。如果你有Linux环境，最后使用Linux环境进行搭建，安装过程也是非常简单，此处不再描述了。Docker Desktop 工具有一个可视化的界面，左侧菜单分别为容器、镜像、卷标三大常规操作提供界面，适合初学者，但，不建议开发人员使用该界面，而是建议大家使用Powershell进行操作。由于安装了WSL2 和Docker 环境，Powershell 里面就可以使用Bush风格的命令了，其实就是Bush操作命令。在Powershell 运行&nbsp;docker run -d -p 80:80 docker/getting-started 命令就可以下载并允许了你的第一个Docker 容器了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/364113bf68fd7ca24ba3890b0f60c26b.jpg" alt="企业应用架构研究系列十九：Docker开发环境"></p> <p>　　开发环境正常运行起来了，我们后续就可以将自己的代码打包成Docker镜像，发布到本地的环境，我们也可以将开发好的镜像发布到DockerHub 上面或者Azure 上面的企业自己的容器注册表，可参考文档：https://docs.microsoft.com/zh-cn/azure/container-registry。</p> <p><img loading="lazy" decoding="async" src="http://img.555519.xyz/uploads3/20220510/d7afec5c5f0a39fdb33cfb0e337185e3.jpg" alt="企业应用架构研究系列十九：Docker开发环境"></p> <p>　　Docker Desktop 工具是对个人和小型企业免费的，我们也可以使用Docker Desktop 进行K8s 环境在本地搭建，后续文章我对K8s 的搭建和配置进行详细描述，本章节只先粗略的对本地dockers开发环境搭建进行了描述，希望能够帮助你开启dockers开心研究之旅。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-94275.htm">中国农大动物医院电话是多少啊（中国农业大学动物医院排班表）</a></p>
+                                        <p>下一个：<a href="/news/article-94849.htm">宠物粮食品牌前十名排名表图片及价格（宠物粮食品牌前十名排名表图片及价格）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-23-node-share-links.htm" title="3月23日最新Clash-X订阅 | 22.7M/S|2025年SSR/Clash/Shadowrocket/V2ray免费节点地址链接分享">3月23日最新Clash-X订阅 | 22.7M/S|2025年SSR/Clash/Shadowrocket/V2ray免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-31-clash-node.htm" title="3月31日最新Clash-X订阅 | 22.7M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享">3月31日最新Clash-X订阅 | 22.7M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-82448.htm" title="宠物粮食成本价 宠物粮食成本价格表">宠物粮食成本价 宠物粮食成本价格表</a></li>
+                        <li class="py-2"><a href="/news/article-76922.htm" title="附近宠物领养基地地址（附近的领养宠物店）">附近宠物领养基地地址（附近的领养宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-88178.htm" title="动物疫苗品牌排行前十名 动物疫苗品牌排行前十名有哪些">动物疫苗品牌排行前十名 动物疫苗品牌排行前十名有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-86012.htm" title="vue3.0，setup()的使用，Composition Api(组合式api)data，computed，methods，watch">vue3.0，setup()的使用，Composition Api(组合式api)data，computed，methods，watch</a></li>
+                        <li class="py-2"><a href="/news/article-92568.htm" title="动物疫苗的种类和研发过程包括哪些（动物疫苗的种类和研发过程包括哪些内容）">动物疫苗的种类和研发过程包括哪些（动物疫苗的种类和研发过程包括哪些内容）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-15-free-subscribe-node.htm" title="4月15日最新Clash-X订阅 | 19.3M/S|2025年SSR/V2ray/Clash/Shadowrocket免费节点地址链接分享">4月15日最新Clash-X订阅 | 19.3M/S|2025年SSR/V2ray/Clash/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-90393.htm" title="上海宠物医院招聘***（上海宠物医院工资一般是多少）">上海宠物医院招聘***（上海宠物医院工资一般是多少）</a></li>
+                        <li class="py-2"><a href="/news/article-79670.htm" title="mysqlbinlog 命令解析binlog文件">mysqlbinlog 命令解析binlog文件</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">88</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--latest Choose Us end-->
+        
+        
+    </main>
+        <!-- Footer area start -->
+    <footer>
+        <section class="footer__area-common background overflow-hidden position-relative z-1">
+            <div class="footer__bottom-wrapper footer__bottom-home-1-bg">
+                <div class="container">
+                    <div class="footer__bottom">
+                        <div class="footer__copyright">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p>
+                                <a href="/">Clash-X V2ray免费订阅地址官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                        <div class="footer__copyright-menu">
+                            <ul>
+                                <li><a href="about-us.html">Privacy & Terms Condition</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/swiper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/wow.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/type.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/counterup.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/nice-select.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery-ui.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/parallax-scroll.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery.countdown.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/isotope-docs.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

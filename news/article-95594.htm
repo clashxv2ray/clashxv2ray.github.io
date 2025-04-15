@@ -1,0 +1,334 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashxv2ray.github.io/news/article-95594.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>如何在IDEA 中配置 Maven</title>
+        <meta name="description" content="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maven 是一个能使我们的java程序开发节省时间和精力，是开发变得相对简单，还能使开发规范化的工具。" />
+        <link rel="icon" href="/assets/website/img/clashxv2ray/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Clash-X V2ray免费订阅地址官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashxv2ray.github.io/news/article-95594.htm" />
+    <meta property="og:site_name" content="Clash-X V2ray免费订阅地址官网" />
+    <meta property="og:title" content="如何在IDEA 中配置 Maven" />
+    <meta property="og:image" content="https://clashxv2ray.github.io/uploads/20250131/9ce0044a897b10e96d31e1ef48c41fa0.webp" />
+        <meta property="og:release_date" content="2025-04-14T08:02:46" />
+    <meta property="og:updated_time" content="2025-04-14T08:02:46" />
+        <meta property="og:description" content="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maven 是一个能使我们的java程序开发节省时间和精力，是开发变得相对简单，还能使开发规范化的工具。" />
+    
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="如何在IDEA 中配置 Maven">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+
+    <link href="/assets/website/css/clashxv2ray/css2-Sofia_swap.css" rel="stylesheet">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/animate.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/swiper.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/fontawesome-pro.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/spacing.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/custom-font.css">
+    <link rel="stylesheet" href="/assets/website/css/clashxv2ray/main.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4Y8M6RNBF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4Y8M6RNBF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+
+    <!-- preloader start -->
+    <div id="preloader">
+        <div class="preloader-close">x</div>
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!-- preloader start -->
+    <!-- Backtotop start -->
+    <div class="backtotop-wrap cursor-pointer">
+        <svg class="backtotop-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+        </svg>
+    </div>
+    <!-- Backtotop end -->
+    <!-- Offcanvas area start -->
+    <div class="fix">
+        <div class="offcanvas__area">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas__top d-flex justify-content-between align-items-center">
+                        <div class="offcanvas__logo">
+                            <a href="/" class="xcblog-blog-logo">
+                                <span>ClashX V2ray</span>
+                            </a>
+                        </div>
+                        <div class="offcanvas__close">
+                            <button class="offcanvas-close-icon animation--flip">
+                                <span class="offcanvas-m-lines">
+                                    <span class="offcanvas-m-line line--1"></span><span class="offcanvas-m-line line--2"></span><span class="offcanvas-m-line line--3"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mobile-menu fix"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+    <div class="offcanvas__overlay-white"></div>
+    <!-- Offcanvas area start -->
+    <!-- Header area start -->
+    <header>
+        <div id="header-sticky" class="header__area header-1">
+            <div class="container">
+                <div class="mega__menu-wrapper p-relative">
+                    <div class="header__main">
+                        <div class="header__left">
+                            <div class="header__logo">
+                                <div class="logo">
+                                    <a href="/" class="xcblog-blog-logo">
+                                                                                <span>ClashX V2ray</span>
+                                                                            </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__middle">
+                            <div class="mean__menu-wrapper d-none d-lg-block">
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                                                                        <li>
+                                                <a href="/">首页</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/free-nodes/">免费节点</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/paid-subscribe/">推荐机场</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/client.htm">客户端</a>
+                                            </li>
+                                                                                        <li>
+                                                <a href="/news/">新闻资讯</a>
+                                            </li>
+                                                                                    </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__right">
+                            <div class="header__action d-flex align-items-center">
+                                <div class="header__hamburger ml-20 d-lg-none">
+                                    <div class="sidebar__toggle">
+                                        <button class="bar-icon">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header area end -->
+
+<div id="popup-search-box">
+    <div class="box-inner-wrap d-flex align-items-center">
+        <form id="form" action="#" method="get" role="search">
+            <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+        </form>
+        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+    </div>
+</div>
+<!-- Header area end -->
+
+<!-- Body main wrapper start -->
+<main>
+
+    <div class="breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg ">
+        <div class="banner-home__middel-shape inner-top-shape"></div>
+        <div class="container">
+            <div class="banner-all-shape-wrapper">
+                <div class="banner-home__banner-shape-1 first-shape">
+                    <img class="upDown-top" src="/assets/website/img/clashxv2ray/banner-shape-1.svg" alt="img not found">
+                </div>
+                <div class="banner-home__banner-shape-2 second-shape">
+                    <img class="upDown-bottom" src="/assets/website/img/clashxv2ray/banner-shape-2.svg" alt="img not found">
+                </div>
+                <div class="right-shape">
+                    <img class="zooming" src="/assets/website/img/clashxv2ray/inner-right-shape.svg" alt="img not found">
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-12">
+                    <div class="breadcrumb__content text-center">
+                        <div class="breadcrumb__title-wrapper mb-15 mb-sm-10 mb-xs-5">
+                            <h1 class="breadcrumb__title color-white">如何在IDEA 中配置 Maven</h1>
+                        </div>
+                        <div class="breadcrumb__menu" data-wow-delay=".5s">
+                            <nav>
+                                <ul>
+                                    <li><span><a href="/">首页</a></span></li>
+                                    <li><span><a href="/news/">新闻资讯</a></span></li>
+                                    <li class="active"><span>正文</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--latest Choose Us start-->
+        <section class="latest-Choose-us__area section-space overflow-hidden latest-Choose-bg">
+            <div class="container p-relative z-index-1">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maven 是一个能使我们的java程序开发节省时间和精力，是开发变得相对简单，还能使开发规范化的工具。在我们开发过程中导入的第三方jar包可能需要其他jar包的支持才能使用，而我们要去弄明白这些依赖的jar包，然后导入，这一过程可能需要耗费我们大量的精力和时间。有时候如果需要的jar数量过于panda，无疑会给我们的开发添堵。&nbsp;而使用 Maven 后，<span style="color:#fe2c24;"><strong>Maven 就可以替我们自动的将当前 jar 包所依赖的其他所有 jar 包全部导入进来，</strong></span>&nbsp;不需要我们自己再去导入相关jar包，能够节省大量的时间和精力，我们也可以不用去了解哪个jar包依赖了哪个jar包，直接配置Maven仓库就行。但相对地会对它产生极大的依赖。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下是在IDEA中配置Maven的两种方式：</p> <p><strong><span style="color:#fe2c24;">第一种是配置IDEA中自带的Maven插件。</span></strong></p> <p><strong><span style="color:#fe2c24;"></span></strong><span style="color:#0d0016;">&nbsp; 我们在新建模块或者项目时，可以直接新建一个Maven项目，如图所示。要使这个Maven项目能够正常的运行，需要做一些相关配置</span></p> <p><img fetchpriority="high" decoding="async" alt="" height="616" src="http://img.555519.xyz/uploads3/20220603/4176fa35dc64956e8812d7b7e316265e.jpg"></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一步：在IDEA的安装目录下找到maven的配置文件：IntelliJ IDEA 2018.3.6\plugins\maven\lib\maven3\conf/settings.xml，然后在里面配置本地仓库的位置</p> <pre><code>&lt;localRepository&gt;E:\LocalRepository（本地仓库的位置）&lt;/localRepository&gt;</code></pre> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;第二步：为了使maven能够自动从中央仓库下载需要的jar包，我们需要给它配置阿里云镜像仓库：在&nbsp; settings.xml 文件的标&lt;mirrors&gt;&lt;/mirrors&gt;标签里面配置以下标签：</p> <pre><code>&lt;mirror&gt;  &lt;id&gt;nexus-aliyun&lt;/id&gt;  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;  &lt;name&gt;Nexus aliyun&lt;/name&gt;  &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt; &lt;/mirror&gt;</code></pre> <p><img decoding="async" alt="" height="1161" src="http://img.555519.xyz/uploads3/20220603/30def03d90ec42ed16259e842195ca8d.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 第三步：配置完第二步后，我们打开IDEA的Settings/Build,Execution,Deployment/Maven目录，可以发现Maven的主目录为IDEA自带的maven目录，配置文件为自带maven目录下的config/settings.xml文件，本地仓库为我们在配置文件中配置的本地仓库地址。</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 最后设置Maven自动导包功能：勾上Settings/Build,Execution,Deployment/Maven/Importing下的Import Maven projects automatically选项，给maven设置自动导jar包的功能。</p> <p><img decoding="async" alt="" height="1150" src="http://img.555519.xyz/uploads3/20220603/cdf8f96f97b932ea13b1840191466d16.jpg"></p> <p><strong><span style="color:#fe2c24;">第二种是配置我们自己安装的maven核心程序。</span></strong></p> <p><strong><span style="color:#fe2c24;"></span></strong><span style="color:#0d0016;">&nbsp; 我们在新建模块或者项目时，可以直接新建一个Maven项目，如图所示。要使这个Maven项目能够正常的运行，需要做一些相关配置</span></p> <p><img loading="lazy" decoding="async" alt="" height="1163" src="http://img.555519.xyz/uploads3/20220603/3f7b74d2784e5562850a7117532a4add.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;然后保存就可以了。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-94849.htm">宠物粮食品牌前十名排名表图片及价格（宠物粮食品牌前十名排名表图片及价格）</a></p>
+                                        <p>下一个：<a href="/news/article-95596.htm">广州宠物食品市场（广州宠物批发）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-91168.htm" title="三国杀已出武将（三国杀出武将顺序）">三国杀已出武将（三国杀出武将顺序）</a></li>
+                        <li class="py-2"><a href="/news/article-66404.htm" title="动物疫苗的使用方法及注意事项视频教程下载 动物疫苗接种方法有哪些">动物疫苗的使用方法及注意事项视频教程下载 动物疫苗接种方法有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-high-speed-nodes.htm" title="3月6日最新Clash-X订阅 | 20.2M/S|2025年SSR/Shadowrocket/Clash/V2ray免费节点地址链接分享">3月6日最新Clash-X订阅 | 20.2M/S|2025年SSR/Shadowrocket/Clash/V2ray免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-93335.htm" title="动物疫苗规定最新消息 动物疫苗规定最新消息查询">动物疫苗规定最新消息 动物疫苗规定最新消息查询</a></li>
+                        <li class="py-2"><a href="/news/article-74912.htm" title="哈尔滨农大动物医院电话是多少 哈尔滨农大动物医院电话是多少号">哈尔滨农大动物医院电话是多少 哈尔滨农大动物医院电话是多少号</a></li>
+                        <li class="py-2"><a href="/news/article-84580.htm" title="动物疫苗经销商电话是多少啊（动物疫苗经销商电话是多少啊）">动物疫苗经销商电话是多少啊（动物疫苗经销商电话是多少啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-10-free-subscribe-node.htm" title="4月10日最新Clash-X订阅 | 20.1M/S|2025年Shadowrocket/V2ray/SSR/Clash免费节点地址链接分享">4月10日最新Clash-X订阅 | 20.1M/S|2025年Shadowrocket/V2ray/SSR/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-clash-windows.htm" title="3月12日最新Clash-X订阅 | 19M/S|2025年SSR/Clash/V2ray/Shadowrocket免费节点地址链接分享">3月12日最新Clash-X订阅 | 19M/S|2025年SSR/Clash/V2ray/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-14-free-node-subscribe.htm" title="4月14日最新Clash-X订阅 | 18.6M/S|2025年Clash/Shadowrocket/SSR/V2ray免费节点地址链接分享">4月14日最新Clash-X订阅 | 18.6M/S|2025年Clash/Shadowrocket/SSR/V2ray免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-71576.htm" title="JavaScript根据二维数组构建最大数组方法详解">JavaScript根据二维数组构建最大数组方法详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">88</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--latest Choose Us end-->
+        
+        
+    </main>
+        <!-- Footer area start -->
+    <footer>
+        <section class="footer__area-common background overflow-hidden position-relative z-1">
+            <div class="footer__bottom-wrapper footer__bottom-home-1-bg">
+                <div class="container">
+                    <div class="footer__bottom">
+                        <div class="footer__copyright">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p>
+                                <a href="/">Clash-X V2ray免费订阅地址官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                        <div class="footer__copyright-menu">
+                            <ul>
+                                <li><a href="about-us.html">Privacy & Terms Condition</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer area end -->
+    <!-- JS here -->
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery-3.6.0.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/meanmenu.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/swiper.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/wow.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/type.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/counterup.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/nice-select.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery-ui.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/parallax-scroll.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/jquery.countdown.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/isotope-docs.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/ajax-form.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/clashxv2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
