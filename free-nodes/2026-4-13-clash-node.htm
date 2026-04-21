@@ -470,19 +470,19 @@ Clash拍子支持包括Vmess（V2Ray）、Shadowsocks等多种协议，满足不
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的规则优先级如何设置？</h5></div>
-    <div class="panel-body">
-        在 PassWall2 中，规则的匹配顺序按配置文件自上而下执行。建议将精确规则放在前面，通用规则放后面，以确保高优先级的流量优先被正确分流到指定出口。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Nekoray 节点订阅自动更新如何实现？</h5></div>
     <div class="panel-body">
         用户添加订阅 URL 后，Nekoray 会定期下载最新节点列表并替换旧节点。保持节点列表最新可减少手动维护，保证节点可用性和网络连接稳定性，提升使用体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的 PAC 模式如何应用？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 用户带宽限制如何配置？</h5></div>
     <div class="panel-body">
-        PAC 模式根据规则自动判断流量是否走代理，无需手动切换节点。适合访问国内外混合网站环境，提高网络访问速度和稳定性，减少误操作导致的访问失败。<hr />    </div>
+        管理员可设置每个用户上传、下载和总流量上限，超出限制可自动降速或阻止访问。保证服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 Reality 功能是什么？</h5></div>
+    <div class="panel-body">
+        Reality 是 V2Ray 新增的伪装技术，可替代传统 TLS。它无需真实证书，通过公钥验证机制实现端到端加密。相比 Trojan 的 HTTPS 伪装方式，Reality 更轻量、安全且配置更简洁。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 是什么？</h5></div>
@@ -495,11 +495,6 @@ Clash拍子支持包括Vmess（V2Ray）、Shadowsocks等多种协议，满足不
         在相同环境下，Trojan 通常连接更快，因为它使用原生 TLS 通道；Vmess 则稍有额外的协议开销。但在配置合理的情况下，两者的速度差距不大，主要取决于服务器线路质量。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 支持手动和二维码导入节点吗？</h5></div>
-    <div class="panel-body">
-        支持。用户可以手动添加节点信息，或者通过扫描节点二维码导入节点。虽然不支持自动订阅更新，但足够满足轻量用户对节点管理和分流的需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 协议和混淆选择如何影响稳定性？</h5></div>
     <div class="panel-body">
         根据网络封锁情况选择合适协议和混淆方式，如 tls1.2_ticket_auth 模拟 HTTPS 流量。合理组合可提升抗封锁能力和连接稳定性，确保节点长期可用，优化网络访问。<hr />    </div>
@@ -510,14 +505,19 @@ Clash拍子支持包括Vmess（V2Ray）、Shadowsocks等多种协议，满足不
         PassWall2 是基于 OpenWRT 的代理管理面板，支持多种协议（V2Ray、Trojan、Shadowsocks 等），拥有图形化界面和分流规则设置功能。它能帮助路由器实现全局代理和智能分流。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 Reality 功能是什么？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 支持手动和二维码导入节点吗？</h5></div>
     <div class="panel-body">
-        Reality 是 V2Ray 新增的伪装技术，可替代传统 TLS。它无需真实证书，通过公钥验证机制实现端到端加密。相比 Trojan 的 HTTPS 伪装方式，Reality 更轻量、安全且配置更简洁。<hr />    </div>
+        支持。用户可以手动添加节点信息，或者通过扫描节点二维码导入节点。虽然不支持自动订阅更新，但足够满足轻量用户对节点管理和分流的需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 用户带宽限制如何配置？</h5></div>
+    <div class="panel-heading"><h5>WinXray 的 PAC 模式如何应用？</h5></div>
     <div class="panel-body">
-        管理员可设置每个用户上传、下载和总流量上限，超出限制可自动降速或阻止访问。保证服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性。    </div>
+        PAC 模式根据规则自动判断流量是否走代理，无需手动切换节点。适合访问国内外混合网站环境，提高网络访问速度和稳定性，减少误操作导致的访问失败。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 的规则优先级如何设置？</h5></div>
+    <div class="panel-body">
+        在 PassWall2 中，规则的匹配顺序按配置文件自上而下执行。建议将精确规则放在前面，通用规则放后面，以确保高优先级的流量优先被正确分流到指定出口。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -546,16 +546,16 @@ Clash拍子支持包括Vmess（V2Ray）、Shadowsocks等多种协议，满足不
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-4-13-clash-node.htm" title="4月13日最新Clash-X订阅 | 21.7M/S|2025年Singbox节点/Trojan节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点免费节点地址链接分享">4月13日最新Clash-X订阅 | 21.7M/S|2025年Singbox节点/Trojan节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-4-free-v2ray.htm" title="3月4日最新Clash-X订阅 | 21.5M/S|2025年Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点/Trojan节点免费节点地址链接分享">3月4日最新Clash-X订阅 | 21.5M/S|2025年Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点/Trojan节点免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-17-free-clash.htm" title="3月17日最新Clash-X订阅 | 22.1M/S|2025年Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点免费节点地址链接分享">3月17日最新Clash-X订阅 | 22.1M/S|2025年Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-15-free-shadowrocket-node.htm" title="4月15日最新Clash-X订阅 | 18.3M/S|2025年V2ray节点/Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点免费节点地址链接分享">4月15日最新Clash-X订阅 | 18.3M/S|2025年V2ray节点/Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-20-node-share.htm" title="3月20日最新Clash-X订阅 | 21.2M/S|2025年Trojan节点/Clash节点/Shadowrocket节点/Singbox节点/SSR节点/V2ray节点免费节点地址链接分享">3月20日最新Clash-X订阅 | 21.2M/S|2025年Trojan节点/Clash节点/Shadowrocket节点/Singbox节点/SSR节点/V2ray节点免费节点地址链接分享</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-18-free-clash.htm" title="3月18日最新Clash-X订阅 | 20.7M/S|2025年SSR节点/Singbox节点/Trojan节点/V2ray节点/Shadowrocket节点/Clash节点免费节点地址链接分享">3月18日最新Clash-X订阅 | 20.7M/S|2025年SSR节点/Singbox节点/Trojan节点/V2ray节点/Shadowrocket节点/Clash节点免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-14-free-ssr-node.htm" title="4月14日最新Clash-X订阅 | 20.3M/S|2025年Singbox节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Trojan节点免费节点地址链接分享">4月14日最新Clash-X订阅 | 20.3M/S|2025年Singbox节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Trojan节点免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-27-free-ssr-subscribe.htm" title="3月27日最新Clash-X订阅 | 18.6M/S|2025年V2ray节点/Clash节点/Trojan节点/SSR节点/Singbox节点/Shadowrocket节点免费节点地址链接分享">3月27日最新Clash-X订阅 | 18.6M/S|2025年V2ray节点/Clash节点/Trojan节点/SSR节点/Singbox节点/Shadowrocket节点免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-12-free-clash-subscribe.htm" title="3月12日最新Clash-X订阅 | 20.4M/S|2025年Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点免费节点地址链接分享">3月12日最新Clash-X订阅 | 20.4M/S|2025年Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-11-free-clash-subscribe.htm" title="3月11日最新Clash-X订阅 | 22.3M/S|2025年Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点免费节点地址链接分享">3月11日最新Clash-X订阅 | 22.3M/S|2025年Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-8-free-ssr-node.htm" title="3月8日最新Clash-X订阅 | 22.4M/S|2025年Trojan节点/Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点免费节点地址链接分享">3月8日最新Clash-X订阅 | 22.4M/S|2025年Trojan节点/Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-9-free-high-speed-nodes.htm" title="4月9日最新Clash-X订阅 | 19.7M/S|2025年Singbox节点/Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Trojan节点免费节点地址链接分享">4月9日最新Clash-X订阅 | 19.7M/S|2025年Singbox节点/Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Trojan节点免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-4-free-v2ray.htm" title="3月4日最新Clash-X订阅 | 21.5M/S|2025年Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点/Trojan节点免费节点地址链接分享">3月4日最新Clash-X订阅 | 21.5M/S|2025年Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点/Trojan节点免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-18-free-node-subscribe.htm" title="4月18日最新Clash-X订阅 | 22.7M/S|2025年V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点/Trojan节点免费节点地址链接分享">4月18日最新Clash-X订阅 | 22.7M/S|2025年V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点/Trojan节点免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-30-node-share.htm" title="3月30日最新Clash-X订阅 | 22.7M/S|2025年V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点/Singbox节点免费节点地址链接分享">3月30日最新Clash-X订阅 | 22.7M/S|2025年V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点/Singbox节点免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-28-free-v2ray-subscribe.htm" title="3月28日最新Clash-X订阅 | 21.8M/S|2025年Singbox节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点/SSR节点免费节点地址链接分享">3月28日最新Clash-X订阅 | 21.8M/S|2025年Singbox节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点/SSR节点免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-14-free-clash-subscribe.htm" title="3月14日最新Clash-X订阅 | 20.5M/S|2025年Singbox节点/Shadowrocket节点/Trojan节点/V2ray节点/Clash节点/SSR节点免费节点地址链接分享">3月14日最新Clash-X订阅 | 20.5M/S|2025年Singbox节点/Shadowrocket节点/Trojan节点/V2ray节点/Clash节点/SSR节点免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-7-free-v2ray-subscribe.htm" title="3月7日最新Clash-X订阅 | 21.8M/S|2025年SSR节点/Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/Trojan节点免费节点地址链接分享">3月7日最新Clash-X订阅 | 21.8M/S|2025年SSR节点/Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/Trojan节点免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-20-clash-node-daily-updates.htm" title="4月20日最新Clash-X订阅 | 20.3M/S|2025年SSR节点/Singbox节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点免费节点地址链接分享">4月20日最新Clash-X订阅 | 20.3M/S|2025年SSR节点/Singbox节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点免费节点地址链接分享</a></li>
                     </ul>
     </div>
 </div>
@@ -567,7 +567,7 @@ Clash拍子支持包括Vmess（V2Ray）、Shadowsocks等多种协议，满足不
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">14</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
